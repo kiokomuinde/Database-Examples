@@ -1,0 +1,67 @@
+1.	Range property p 
+	Get w ( p.propId, p.locDesc, p.state): p.propType = “T”  
+
+
+2.	Range Rental r
+	Customer c 
+	Get w ( r.propId, r.startDt ): c ( c.custNr = r.custNr  ^ c.name = “Ava Kashun” )  
+
+
+3.	Range property p 
+	Range rental r 
+
+	Range customer c 
+
+	Get w ( p.propId, p.locDesc ): 
+	p.state = TX ^ r ( p.propId = r.propId ^ r.startDt > 2019-11-04 ^ c ( c.custNr = r.custNr ^ c.name = “perry Scope))
+ 
+
+4. 	Range customer c
+	Range rental r
+	Range rental r2 
+
+	Get w(c.name, c.custNr) : c.custNr != 444 ^ r( r.custNr = c.custNr ^ r2 (  r.propId = r2.propId ^ r2.custNr = 444))
+
+
+5. 	Range property p
+	Get w-1 ( p.propId ): p.propType = C
+	Range w-1 w1 
+	Range rental r 
+	Range customer c
+	Get w-2( c.custNr, c.name ): w1 ( r ( r.propId = w1.propId ^ r.custNr = c.custNr) )
+
+
+6. 	Range customer c
+	Range property p
+	Range rental r 
+
+	Get w( c.custNr, c.name, c.birthDt) : r ( r.custNr = c.custNr 	p( r.propId = p.propId ^ state = CO )) 
+
+   The answer does not include any customers who dont have any associated rentals.
+
+7. 	Range properties p 
+	Range rental r 
+	Get w ( p.propId, p.locDesc ) : r( p.propId = r.propId r.custNr = 777)
+ 
+ 	Answer does not include associated rentals.
+
+8. 	Range customer c 
+	Range rental r 
+	Get wq8 ( r.propId ) : c( c.custNr = r.custNr ^ c.name = ’Penny Lane’ )
+
+	Range wq8 wq8 
+	Range rental r 
+	Range customer c
+	Get w( c.custNr, c.name ): c.name != penny Lane ^ wq8 ( r ( r.propId = wq8.propId ^ r.custNr = c.custNr) )
+ 
+
+   Penny lane included.
+
+9.	RANGE property property
+	RANGE rental rental
+	RANGE customer customer 
+	GET w (customer ⋈ customer . custnr = rental . custnr rental ⋈ rental .propid = property . propid property)
+	π customer . custnr, customer . name, customer . birthdt
+ 	σ property . state <> "CO" 
+
+ 	Including customers that dont have any associated rental.
